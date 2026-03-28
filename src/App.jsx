@@ -579,7 +579,7 @@ function Projects() {
 }
 
 /* ====== GITHUB ====== */
-function GitHub() {
+function GitHub({ dark }) {
   const chartRef = useRef(null);
 
   useEffect(() => {
@@ -633,14 +633,14 @@ function GitHub() {
 
           <div className="github-readme-stats" style={{ marginTop: 36, display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
             <img
-              src="https://github-readme-stats.vercel.app/api?username=RAYYANHASSAN321&show_icons=true&theme=dark&bg_color=111827&title_color=088F8F&icon_color=088F8F&text_color=9ba8c0&border_color=1e3a5f"
+              src={`https://github-readme-stats.vercel.app/api?username=RAYYANHASSAN321&show_icons=true&theme=${dark ? 'dark' : 'default'}&bg_color=${dark ? '111827' : 'ffffff'}&title_color=088F8F&icon_color=088F8F&text_color=${dark ? '9ba8c0' : '3a4a5c'}&border_color=${dark ? '1e3a5f' : '088F8F'}`}
               alt="Rayyan Hassan GitHub Stats"
               style={{ borderRadius: 12, maxWidth: '100%' }}
               loading="lazy"
               onError={e => { e.target.style.display = 'none'; }}
             />
             <img
-              src="https://github-readme-stats.vercel.app/api/top-langs/?username=RAYYANHASSAN321&layout=compact&theme=dark&bg_color=111827&title_color=088F8F&text_color=9ba8c0&border_color=1e3a5f"
+              src={`https://github-readme-stats.vercel.app/api/top-langs/?username=RAYYANHASSAN321&layout=compact&theme=${dark ? 'dark' : 'default'}&bg_color=${dark ? '111827' : 'ffffff'}&title_color=088F8F&text_color=${dark ? '9ba8c0' : '3a4a5c'}&border_color=${dark ? '1e3a5f' : '088F8F'}`}
               alt="Rayyan Hassan Top Languages"
               style={{ borderRadius: 12, maxWidth: '100%' }}
               loading="lazy"
@@ -976,13 +976,17 @@ function Footer() {
 
 /* ====== APP ROOT ====== */
 export default function App() {
-  const [dark, setDark] = useState(false);
+  const [dark, setDark] = useState(() => {
+    const saved = localStorage.getItem('theme');
+    return saved ? saved === 'dark' : true;
+  });
   const [backTop, setBackTop] = useState(false);
   const progress = useScrollProgress();
   useScrollReveal();
 
   useEffect(() => {
     document.body.classList.toggle('light-mode', !dark);
+    localStorage.setItem('theme', dark ? 'dark' : 'light');
   }, [dark]);
 
   useEffect(() => {
@@ -1037,7 +1041,7 @@ export default function App() {
         <About />
         <Skills />
         <Projects />
-        <GitHub />
+        <GitHub dark={dark} />
         <EducationExperience />
         <Contact />
       </main>
