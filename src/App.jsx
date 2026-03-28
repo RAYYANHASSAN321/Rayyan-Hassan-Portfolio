@@ -1,5 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import profileImg from './assets/profile.png';
+import resumePdf from './assets/Rayyan Hassan.pdf';
+import logoImg from './assets/logo.png';
 
 // React Icons
 import {
@@ -270,6 +272,7 @@ function Navbar({ dark, toggleDark }) {
         <div className="container">
           <div className="nav-inner">
             <a className="nav-logo" href="#home" onClick={e => { e.preventDefault(); scrollTo('#home'); }}>
+              <img src={logoImg} alt="Rayyan Hassan" />
               Rayyan<span>.</span>
             </a>
             <ul className="nav-links">
@@ -310,7 +313,7 @@ function Navbar({ dark, toggleDark }) {
           </a>
         ))}
         <a
-          href="/Rayyan_Hassan_CV.pdf"
+          href={resumePdf}
           download
           style={{ color: 'var(--teal-light)', fontWeight: 700, display: 'flex', alignItems: 'center', gap: 8 }}
           onClick={() => setMenuOpen(false)}
@@ -370,7 +373,7 @@ function Hero() {
               >
                 <IoRocketOutline size={18} /> View My Work
               </a>
-              <a href="/Rayyan_Hassan_CV.pdf" id="hero-download-cv" className="outline-btn" download>
+              <a href={resumePdf} id="hero-download-cv" className="outline-btn" download>
                 <FiDownload size={16} /> Download CV
               </a>
             </div>
@@ -577,6 +580,15 @@ function Projects() {
 
 /* ====== GITHUB ====== */
 function GitHub() {
+  const chartRef = useRef(null);
+
+  useEffect(() => {
+    if (chartRef.current) {
+      // Scroll to the end (right) to show recent activity
+      chartRef.current.scrollLeft = chartRef.current.scrollWidth;
+    }
+  }, []);
+
   const ghStats = [
     { Icon: FaFolderOpen, num: '10+',  label: 'Repositories' },
     { Icon: FaStar,       num: '30+',  label: 'Stars Earned' },
@@ -606,11 +618,12 @@ function GitHub() {
             ))}
           </div>
 
-          <div className="github-contrib-img" style={{ marginTop: 40 }}>
+          <div ref={chartRef} className="github-contrib-container" style={{ marginTop: 40 }}>
             <img
               src="https://ghchart.rshah.org/26A641/RAYYANHASSAN321"
               alt="Rayyan Hassan's GitHub contribution chart"
               loading="lazy"
+              onLoad={() => { if(chartRef.current) chartRef.current.scrollLeft = chartRef.current.scrollWidth; }}
               onError={e => { e.target.style.display = 'none'; }}
             />
             <p style={{ color: 'var(--text-muted)', fontSize: '0.8rem', marginTop: 6 }}>
@@ -618,7 +631,7 @@ function GitHub() {
             </p>
           </div>
 
-          <div style={{ marginTop: 36, display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
+          <div className="github-readme-stats" style={{ marginTop: 36, display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
             <img
               src="https://github-readme-stats.vercel.app/api?username=RAYYANHASSAN321&show_icons=true&theme=dark&bg_color=111827&title_color=088F8F&icon_color=088F8F&text_color=9ba8c0&border_color=1e3a5f"
               alt="Rayyan Hassan GitHub Stats"
@@ -908,24 +921,53 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="container">
-        <div className="footer-inner">
-          <a className="footer-logo" href="#home" onClick={e => { e.preventDefault(); scrollTo('#home'); }}>
-            Rayyan<span>.</span>Hassan
-          </a>
-          <p className="footer-copy">
-            © 2025 <span>Rayyan Hassan</span>. Built with ♥ & React.
-          </p>
-          <div className="footer-links">
-            <a className="social-icon-btn" href="https://github.com/RAYYANHASSAN321" target="_blank" rel="noopener noreferrer" title="GitHub">
-              <FiGithub size={17} />
+        <div className="footer-top">
+          <div className="footer-brand">
+            <a className="footer-logo" href="#home" onClick={e => { e.preventDefault(); scrollTo('#home'); }}>
+              <img src={logoImg} alt="Rayyan Hassan" />
+              Rayyan<span>.</span>Hassan
             </a>
-            <a className="social-icon-btn" href="https://pk.linkedin.com/in/rayyanhasn" target="_blank" rel="noopener noreferrer" title="LinkedIn">
-              <FiLinkedin size={17} />
-            </a>
-            <a className="social-icon-btn" href="mailto:rayyanhassan1688@gmail.com" title="Email">
-              <FiMail size={17} />
-            </a>
+            <p className="footer-tagline">
+              Crafting high-quality digital experiences with modern technologies and clean code.
+            </p>
+            <div className="footer-social-links">
+              <a className="social-icon-btn" href="https://github.com/RAYYANHASSAN321" target="_blank" rel="noopener noreferrer" title="GitHub">
+                <FiGithub size={17} />
+              </a>
+              <a className="social-icon-btn" href="https://pk.linkedin.com/in/rayyanhasn" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+                <FiLinkedin size={17} />
+              </a>
+              <a className="social-icon-btn" href="mailto:rayyanhassan1688@gmail.com" title="Email">
+                <FiMail size={17} />
+              </a>
+            </div>
           </div>
+
+          <div className="footer-links-col">
+            <h4>Quick Links</h4>
+            <ul>
+              {NAV_LINKS.map(l => (
+                <li key={l.href}>
+                  <a href={l.href} onClick={e => { e.preventDefault(); scrollTo(l.href); }}>{l.label}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="footer-contact-col">
+            <h4>Get In Touch</h4>
+            <ul>
+              <li><FiMail size={14} /> rayyanhassan1688@gmail.com</li>
+              <li><FiMapPin size={14} /> Pakistan</li>
+              <li><FiClock size={14} /> Available for freelance/remote</li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="footer-bottom">
+          <p className="footer-copy">
+            © 2025 <span>Rayyan Hassan</span>. Made with ❤️ for the world.
+          </p>
         </div>
       </div>
     </footer>
@@ -934,7 +976,7 @@ function Footer() {
 
 /* ====== APP ROOT ====== */
 export default function App() {
-  const [dark, setDark] = useState(true);
+  const [dark, setDark] = useState(false);
   const [backTop, setBackTop] = useState(false);
   const progress = useScrollProgress();
   useScrollReveal();
@@ -947,6 +989,36 @@ export default function App() {
     const h = () => setBackTop(window.scrollY > 400);
     window.addEventListener('scroll', h);
     return () => window.removeEventListener('scroll', h);
+  }, []);
+
+  useEffect(() => {
+    // Disable right-click
+    const handleContext = (e) => e.preventDefault();
+    document.addEventListener('contextmenu', handleContext);
+
+    // Disable common shortcuts for Inspect/Source
+    const handleKeyDown = (e) => {
+      if (
+        e.keyCode === 123 || // F12
+        (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) || // Ctrl+Shift+I/J/C
+        (e.ctrlKey && e.keyCode === 85) // Ctrl+U
+      ) {
+        e.preventDefault();
+      }
+    };
+    document.addEventListener('keydown', handleKeyDown);
+
+    // Disable image dragging
+    const handleDrag = (e) => {
+      if (e.target.tagName === 'IMG') e.preventDefault();
+    };
+    document.addEventListener('dragstart', handleDrag);
+
+    return () => {
+      document.removeEventListener('contextmenu', handleContext);
+      document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('dragstart', handleDrag);
+    };
   }, []);
 
   const scrollTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
