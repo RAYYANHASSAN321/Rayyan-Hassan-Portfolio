@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://rayyanhassan.vercel.app/sitemap.xml

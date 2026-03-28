@@ -383,7 +383,7 @@ function Hero() {
                 <a id="social-linkedin" className="social-icon-btn" href="https://pk.linkedin.com/in/rayyanhasn" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
                   <FiLinkedin size={17} />
                 </a>
-                <a id="social-email" className="social-icon-btn" href="mailto:rayyanhassan321@email.com" aria-label="Email" title="Email">
+                <a id="social-email" className="social-icon-btn" href="mailto:rayyanhassan1688@gmail.com" aria-label="Email" title="Email">
                   <FiMail size={17} />
                 </a>
               </div>
@@ -675,26 +675,30 @@ function EducationExperience() {
             </div>
             <div className="timeline-item reveal-left" style={{ transitionDelay: '100ms' }}>
               <div className="timeline-card">
-                <span className="tl-period">2021 – Present &nbsp;🟢 In Progress</span>
-                <div className="tl-title">Bachelor of Science in Computer Science</div>
-                <div className="tl-org">Example University, Pakistan</div>
-                <p className="tl-desc">
-                  Currently pursuing BS Computer Science. Studying core fundamentals including
-                  Data Structures, Algorithms, Database Systems, Software Engineering, AI,
-                  and Web Development. Actively working on real-world projects alongside studies.
-                </p>
+                <span className="tl-period">2026 – Present</span>
+                <div className="tl-title">BSCM</div>
+                <div className="tl-org">University of Karachi, Pakistan</div>
               </div>
             </div>
             <div className="timeline-item reveal-left" style={{ transitionDelay: '200ms' }}>
               <div className="timeline-card">
-                <span className="tl-period">Completed ✓</span>
-                <div className="tl-title">ACCP Prime Diploma</div>
-                <div className="tl-org">Aptech Computer Education, Pakistan</div>
-                <p className="tl-desc">
-                  Completed the ACCP Prime professional IT diploma from Aptech, covering
-                  software development, web programming, databases, OOP, and project-based
-                  learning — building a strong industry-ready foundation.
-                </p>
+                <span className="tl-period">2023 – 2026</span>
+                <div className="tl-title">Advanced Diploma in Software Engineering</div>
+                <div className="tl-org">Aptech Learning, Pakistan</div>
+              </div>
+            </div>
+            <div className="timeline-item reveal-left" style={{ transitionDelay: '300ms' }}>
+              <div className="timeline-card">
+                <span className="tl-period">2023 – 2025</span>
+                <div className="tl-title">HSSC (Computer Science)</div>
+                <div className="tl-org">Siraj-Ul-Daulah Government Degree College, Karachi</div>
+              </div>
+            </div>
+            <div className="timeline-item reveal-left" style={{ transitionDelay: '400ms' }}>
+              <div className="timeline-card">
+                <span className="tl-period">2021 – 2023</span>
+                <div className="tl-title">SSC (Computer Science)</div>
+                <div className="tl-org">Quaid-e-Azam Rangers School & College, Karachi</div>
               </div>
             </div>
           </div>
@@ -709,31 +713,46 @@ function EducationExperience() {
             </div>
             <div className="timeline-item reveal-right" style={{ transitionDelay: '100ms' }}>
               <div className="timeline-card">
-                <span className="tl-period">2024 – Present</span>
-                <div className="tl-title">Software Developer Intern</div>
-                <div className="tl-org">Tech Solutions Pvt Ltd, Pakistan</div>
+                <span className="tl-period">Feb 2026 – Present | Karachi (Onsite)</span>
+                <div className="tl-title">Full-Stack Developer</div>
+                <div className="tl-org">Nexal IT Services</div>
                 <div className="tl-desc">
                   <ul>
-                    <li>Developed and maintained web-based applications</li>
-                    <li>Built responsive UI components using React and Bootstrap</li>
-                    <li>Integrated third-party REST APIs into existing systems</li>
-                    <li>Performed QA testing and debugging of application features</li>
-                    <li>Collaborated with senior developers using Git workflows</li>
+                    <li>Building scalable web apps using MERN and MEAN stacks.</li>
+                    <li>Developing interfaces with React.js and Angular.</li>
+                    <li>Designing robust Node.js/Express backends and RESTful APIs.</li>
+                    <li>Managing MongoDB and MySQL databases with query optimization.</li>
+                    <li>Integrating third-party APIs and using Git workflows.</li>
                   </ul>
                 </div>
               </div>
             </div>
             <div className="timeline-item reveal-right" style={{ transitionDelay: '200ms' }}>
               <div className="timeline-card">
-                <span className="tl-period">2023</span>
-                <div className="tl-title">Freelance Web Developer</div>
-                <div className="tl-org">Self-Employed</div>
+                <span className="tl-period">Nov 2025 – Feb 2026 | Karachi (Onsite)</span>
+                <div className="tl-title">Full-Stack Developer (Internship)</div>
+                <div className="tl-org">Nexal IT Services</div>
                 <div className="tl-desc">
                   <ul>
-                    <li>Built custom websites for local businesses</li>
-                    <li>Created responsive landing pages and portfolios</li>
-                    <li>Delivered projects with React, PHP, and WordPress</li>
-                    <li>Managed client communication and project timelines</li>
+                    <li>Contributed to front-end and back-end dev using React, Node, and PHP.</li>
+                    <li>Assisted in building RESTful APIs and server-side logic.</li>
+                    <li>Worked with MySQL and MongoDB for structured data management.</li>
+                    <li>Gained exposure to real-world debugging and performance optimization.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div className="timeline-item reveal-right" style={{ transitionDelay: '300ms' }}>
+              <div className="timeline-card">
+                <span className="tl-period">Feb 2024 – Apr 2024 | Karachi (Onsite)</span>
+                <div className="tl-title">Junior Front-End Developer (Internship)</div>
+                <div className="tl-org">JoyBox Pakistan</div>
+                <div className="tl-desc">
+                  <ul>
+                    <li>Designed responsive pages using HTML, CSS, JS, and Bootstrap.</li>
+                    <li>Applied modern UI design with Tailwind CSS and Material-UI.</li>
+                    <li>Worked in Agile Scrum teams and participated in sprint planning.</li>
+                    <li>Optimized front-end performance for faster load times.</li>
                   </ul>
                 </div>
               </div>
@@ -753,15 +772,34 @@ function Contact() {
 
   const handleChange = e => setForm(f => ({ ...f, [e.target.name]: e.target.value }));
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
+    console.log("Submitting form data:", form);
     setSending(true);
-    setTimeout(() => { setSending(false); setSent(true); }, 1500);
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      const data = await response.json();
+      if (data.success) {
+        setSent(true);
+      } else {
+        alert("Failed to send message. Please try again or email me directly.");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("An error occurred. Please try again later.");
+    } finally {
+      setSending(false);
+    }
   };
 
   const contactDetails = [
-    { Icon: MdEmail,      label: 'Email',        val: 'rayyanhassan321@email.com', href: 'mailto:rayyanhassan321@email.com' },
-    { Icon: MdLocationOn, label: 'Location',      val: 'Pakistan 🇵🇰',              href: null },
+    { Icon: MdEmail,      label: 'Email 1',      val: 'rayyanhasan571@gmail.com', href: 'mailto:rayyanhasan571@gmail.com' },
+    { Icon: MdEmail,      label: 'Email 2',      val: 'rayyanhassan1688@gmail.com', href: 'mailto:rayyanhassan1688@gmail.com' },
+    { Icon: MdLocationOn, label: 'Location',      val: 'Karachi, Pakistan 🇵🇰',      href: null },
     { Icon: FiClock,      label: 'Availability',  val: 'Mon – Sat, 9am – 6pm PKT', href: null },
   ];
 
@@ -884,7 +922,7 @@ function Footer() {
             <a className="social-icon-btn" href="https://pk.linkedin.com/in/rayyanhasn" target="_blank" rel="noopener noreferrer" title="LinkedIn">
               <FiLinkedin size={17} />
             </a>
-            <a className="social-icon-btn" href="mailto:rayyanhassan321@email.com" title="Email">
+            <a className="social-icon-btn" href="mailto:rayyanhassan1688@gmail.com" title="Email">
               <FiMail size={17} />
             </a>
           </div>
