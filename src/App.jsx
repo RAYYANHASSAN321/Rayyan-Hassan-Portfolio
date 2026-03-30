@@ -966,7 +966,7 @@ function Footer() {
 
         <div className="footer-bottom">
           <p className="footer-copy">
-            © 2025 <span>Rayyan Hassan</span>. Made with ❤️ for the world.
+            © 2025 <span>Rayyan Hassan</span>.
           </p>
         </div>
       </div>
