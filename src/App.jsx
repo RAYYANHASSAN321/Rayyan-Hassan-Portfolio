@@ -17,7 +17,7 @@ import {
   FaHotel, FaPython, FaParking, FaAmbulance,
   FaCalendarAlt, FaShoppingBag, FaLeaf, FaRobot,
   FaGithub, FaLinkedin, FaStar, FaCodeBranch, FaUsers,
-  FaFolderOpen,
+  FaFolderOpen, FaFacebook, FaInstagram, FaWhatsapp,
 } from 'react-icons/fa';
 import {
   SiFlutter, SiFirebase, SiPhp, SiMysql, SiFlask,
@@ -385,6 +385,15 @@ function Hero() {
                 </a>
                 <a id="social-linkedin" className="social-icon-btn" href="https://pk.linkedin.com/in/rayyanhasn" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
                   <FiLinkedin size={17} />
+                </a>
+                <a id="social-facebook" className="social-icon-btn" href="https://www.facebook.com/rayyanitservices/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook">
+                  <FaFacebook size={17} />
+                </a>
+                <a id="social-instagram" className="social-icon-btn" href="https://www.instagram.com/rayyan_itservices/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
+                  <FaInstagram size={17} />
+                </a>
+                <a id="social-whatsapp" className="social-icon-btn" href="https://wa.me/923491833008" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" title="WhatsApp">
+                  <FaWhatsapp size={17} />
                 </a>
                 <a id="social-email" className="social-icon-btn" href="mailto:rayyanhassan1688@gmail.com" aria-label="Email" title="Email">
                   <FiMail size={17} />
@@ -849,6 +858,15 @@ function Contact() {
               <a id="contact-linkedin" href="https://pk.linkedin.com/in/rayyanhasn" target="_blank" rel="noopener noreferrer" className="contact-social-btn">
                 <FaLinkedin size={16} /> LinkedIn
               </a>
+              <a id="contact-facebook" href="https://www.facebook.com/rayyanitservices/" target="_blank" rel="noopener noreferrer" className="contact-social-btn">
+                <FaFacebook size={16} /> Facebook
+              </a>
+              <a id="contact-instagram" href="https://www.instagram.com/rayyan_itservices/" target="_blank" rel="noopener noreferrer" className="contact-social-btn">
+                <FaInstagram size={16} /> Instagram
+              </a>
+              <a id="contact-whatsapp" href="https://wa.me/923491833008" target="_blank" rel="noopener noreferrer" className="contact-social-btn">
+                <FaWhatsapp size={16} /> WhatsApp
+              </a>
               <a id="contact-github" href="https://github.com/RAYYANHASSAN321" target="_blank" rel="noopener noreferrer" className="contact-social-btn">
                 <FaGithub size={16} /> GitHub
               </a>
@@ -936,6 +954,15 @@ function Footer() {
               </a>
               <a className="social-icon-btn" href="https://pk.linkedin.com/in/rayyanhasn" target="_blank" rel="noopener noreferrer" title="LinkedIn">
                 <FiLinkedin size={17} />
+              </a>
+              <a className="social-icon-btn" href="https://www.facebook.com/rayyanitservices/" target="_blank" rel="noopener noreferrer" title="Facebook">
+                <FaFacebook size={17} />
+              </a>
+              <a className="social-icon-btn" href="https://www.instagram.com/rayyan_itservices/" target="_blank" rel="noopener noreferrer" title="Instagram">
+                <FaInstagram size={17} />
+              </a>
+              <a className="social-icon-btn" href="https://wa.me/923491833008" target="_blank" rel="noopener noreferrer" title="WhatsApp">
+                <FaWhatsapp size={17} />
               </a>
               <a className="social-icon-btn" href="mailto:rayyanhassan1688@gmail.com" title="Email">
                 <FiMail size={17} />
@@ -1048,6 +1075,18 @@ export default function App() {
 
       {/* Footer */}
       <Footer />
+
+      {/* WhatsApp Floating Button */}
+      <a
+        href="https://wa.me/923491833008"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="whatsapp-float pulse"
+        aria-label="Chat on WhatsApp"
+      >
+        <FaWhatsapp size={28} />
+        <span className="whatsapp-tooltip">Chat with me</span>
+      </a>
 
       {/* Back to top */}
       <button
