@@ -5,13 +5,17 @@
 /* ========================
    NAVBAR
 ======================== */
-.navbar {
+.navbar-header {
   position: fixed;
   top: 1.2rem;
   left: 50%;
   transform: translateX(-50%);
   width: min(1200px, 92%);
   z-index: 1000;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navbar {
   height: clamp(65px, 8vh, 75px);
   display: flex;
   align-items: center;
@@ -25,11 +29,14 @@
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
 }
 
-.navbar.scrolled {
+.navbar-header.scrolled {
   top: 0.8rem;
+  width: min(1240px, 95%);
+}
+
+.navbar-header.scrolled .navbar {
   background: rgba(10, 15, 26, 0.85);
   border-color: rgba(8, 143, 143, 0.25);
-  width: min(1240px, 95%);
   box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
 }
 
@@ -39,7 +46,7 @@ body.light-mode .navbar {
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
 }
 
-body.light-mode .navbar.scrolled {
+body.light-mode .navbar-header.scrolled .navbar {
   background: rgba(255, 255, 255, 0.9);
 }
 

@@ -1,4 +1,12 @@
+# General Search Engines
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /node_modules/
 
+# Sitemap location
 Sitemap: https://rayyanhassan.vercel.app/sitemap.xml
+
+# Crawl-delay for some bots
+User-agent: PetalBot
+Crawl-delay: 10

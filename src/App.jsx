@@ -268,11 +268,12 @@ function Navbar({ dark, toggleDark }) {
 
   return (
     <>
-      <nav className={`navbar${scrolled ? ' scrolled' : ''}`}>
+    <header className={`navbar-header${scrolled ? ' scrolled' : ''}`}>
+      <nav className="navbar" aria-label="Main Navigation">
         <div className="container">
           <div className="nav-inner">
-            <a className="nav-logo" href="#home" onClick={e => { e.preventDefault(); scrollTo('#home'); }}>
-              <img src={logoImg} alt="Rayyan Hassan" />
+            <a className="nav-logo" href="#home" onClick={e => { e.preventDefault(); scrollTo('#home'); }} aria-label="Rayyan Hassan Home">
+              <img src={logoImg} alt="Rayyan Hassan Logo" width="32" height="32" />
               Rayyan<span>.</span>
             </a>
             <ul className="nav-links">
@@ -287,17 +288,17 @@ function Navbar({ dark, toggleDark }) {
               ))}
             </ul>
             <div className="nav-actions">
-              <button id="theme-toggle" className="theme-toggle" onClick={toggleDark} aria-label="Toggle theme">
+              <button id="theme-toggle" className="theme-toggle" onClick={toggleDark} aria-label={`Switch to ${dark ? 'light' : 'dark'} mode`}>
                 {dark ? <FiSun size={17} /> : <FiMoon size={17} />}
               </button>
-              <a href="#contact" className="nav-hire-btn" onClick={e => { e.preventDefault(); scrollTo('#contact'); }}>
+              <a href="#contact" className="nav-hire-btn" onClick={e => { e.preventDefault(); scrollTo('#contact'); }} aria-label="Hire Rayyan Hassan">
                 Hire Me
               </a>
               <button
                 id="nav-hamburger"
                 className={`nav-hamburger${menuOpen ? ' open' : ''}`}
                 onClick={() => setMenuOpen(o => !o)}
-                aria-label="Toggle menu"
+                aria-label="Toggle Mobile Menu"
               >
                 <span /><span /><span />
               </button>
@@ -305,18 +306,21 @@ function Navbar({ dark, toggleDark }) {
           </div>
         </div>
       </nav>
+    </header>
 
-      <div className={`mobile-menu${menuOpen ? ' open' : ''}`}>
+      <div className={`mobile-menu${menuOpen ? ' open' : ''}`} id="mobile-navigation-menu">
         {NAV_LINKS.map(l => (
-          <a key={l.href} href={l.href} onClick={e => { e.preventDefault(); scrollTo(l.href); }}>
+          <a key={l.href} id={`mobile-nav-${l.href.slice(1)}`} href={l.href} onClick={e => { e.preventDefault(); scrollTo(l.href); }} aria-label={`Navigate to ${l.label}`}>
             {l.label}
           </a>
         ))}
         <a
+          id="mobile-nav-download-cv"
           href={resumePdf}
           download
           style={{ color: 'var(--teal-light)', fontWeight: 700, display: 'flex', alignItems: 'center', gap: 8 }}
           onClick={() => setMenuOpen(false)}
+          aria-label="Download Curriculum Vitae"
         >
           <FiDownload size={15} /> Download CV
         </a>
@@ -406,7 +410,7 @@ function Hero() {
           <div className={`hero-right${loaded ? ' loaded' : ''}`}>
             <div className="hero-visual">
               <div className="avatar-ring">
-                <img className="avatar-img" src={profileImg} alt="Rayyan Hassan – Software Developer" />
+                <img className="avatar-img" src={profileImg} alt="Rayyan Hassan – Software Developer" width="340" height="340" />
               </div>
             </div>
             <div className="hero-stats">
@@ -445,7 +449,7 @@ function About() {
         <div className="about-grid">
           <div className="about-image-wrap reveal-left">
             <div className="about-img-card">
-              <img src={profileImg} alt="Rayyan Hassan" />
+              <img src={profileImg} alt="Rayyan Hassan" width="400" height="420" />
             </div>
             <div className="about-floating-badge">
               <span className="afb-num">ACCP</span>
@@ -461,7 +465,9 @@ function About() {
             <p>
               I'm <strong style={{ color: 'var(--teal-light)' }}>Rayyan Hassan</strong>, a passionate
               software developer with a strong foundation in building modern web applications,
-              AI/ML-based solutions, and full-stack systems from Pakistan.
+              high-performance AI/ML systems, and scalable full-stack solutions. With expertise in the
+              <strong style={{ color: 'var(--teal-light)' }}> MERN & MEAN stacks</strong>, I specialize in crafting
+              robust digital products from Pakistan.
             </p>
             <p>
               I enjoy solving real-world problems through technology — whether it's developing intelligent
@@ -469,9 +475,9 @@ function About() {
               learning new tools and frameworks to stay ahead in the tech world.
             </p>
             <p>
-              My journey spans across web development, mobile apps, and AI/ML projects. I believe that
-              great software not only works flawlessly — it also creates meaningful experiences for the
-              users it serves.
+              My journey spans across <strong style={{ color: 'var(--teal-light)' }}>React, Node.js, Python, and Flutter</strong>. I believe that
+              great software not only works flawlessly — it also creates a premium <strong style={{ color: 'var(--teal-light)' }}>UI/UX experience</strong> that
+              serves users effectively.
             </p>
             <div className="about-tags">
               {['Problem Solver', 'Quick Learner', 'Team Player', 'AI Enthusiast', 'Open Source Lover', 'Pakistan 🇵🇰'].map(t => (
@@ -942,7 +948,7 @@ function Footer() {
         <div className="footer-top">
           <div className="footer-brand">
             <a className="footer-logo" href="#home" onClick={e => { e.preventDefault(); scrollTo('#home'); }}>
-              <img src={logoImg} alt="Rayyan Hassan" />
+              <img src={logoImg} alt="Rayyan Hassan" width="32" height="32" />
               Rayyan<span>.</span>Hassan
             </a>
             <p className="footer-tagline">
@@ -972,10 +978,10 @@ function Footer() {
 
           <div className="footer-links-col">
             <h4>Quick Links</h4>
-            <ul>
+            <ul id="footer-quick-links">
               {NAV_LINKS.map(l => (
                 <li key={l.href}>
-                  <a href={l.href} onClick={e => { e.preventDefault(); scrollTo(l.href); }}>{l.label}</a>
+                  <a id={`footer-link-${l.href.slice(1)}`} href={l.href} onClick={e => { e.preventDefault(); scrollTo(l.href); }}>{l.label}</a>
                 </li>
               ))}
             </ul>
@@ -993,7 +999,10 @@ function Footer() {
 
         <div className="footer-bottom">
           <p className="footer-copy">
-            © 2025 <span>Rayyan Hassan</span>.
+            © 2025 <span>Rayyan Hassan</span>. All Rights Reserved.
+          </p>
+          <p style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginTop: 8 }}>
+            Last Updated: April 2026
           </p>
         </div>
       </div>

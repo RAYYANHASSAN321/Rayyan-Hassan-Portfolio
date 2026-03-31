@@ -1,0 +1,16 @@
+{
+  "name": "Rayyan Hassan Portfolio",
+  "short_name": "Rayyan Hassan",
+  "description": "Portfolio of Rayyan Hassan - Software Developer & AI/ML Specialist",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#0a0f1a",
+  "theme_color": "#088F8F",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
