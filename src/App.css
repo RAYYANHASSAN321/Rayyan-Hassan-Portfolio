@@ -526,10 +526,18 @@ body.light-mode .navbar.scrolled {
     justify-content: center;
   }
   .hero-socials { 
-    justify-content: center; 
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
     width: 100%;
-    margin-top: 24px;
-    padding-top: 16px;
+    margin-top: 28px;
+    padding-top: 20px;
+  }
+  .hero-social-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    width: auto;
   }
   .hero-stats { 
     display: none; /* Hide stats on mobile for a cleaner look */
