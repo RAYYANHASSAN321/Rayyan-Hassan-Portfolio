@@ -5,7 +5,7 @@ Disallow: /api/
 Disallow: /node_modules/
 
 # Sitemap location
-Sitemap: https://rayyanhassan.vercel.app/sitemap.xml
+Sitemap: https://rayyan-hassan.vercel.app/sitemap.xml
 
 # Crawl-delay for some bots
 User-agent: PetalBot
