@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
-import profileImg from './assets/profile.png';
+import profileImg from './assets/Rayyan-profile-full.jpg';
+import aboutImg from './assets/Rayyan-profile-full.jpg';
 import resumePdf from './assets/Rayyan Hassan.pdf';
+import resumeDocx from './assets/Rayyan Hassan.docx?url';
 import logoImg from './assets/logo.png';
 
 // React Icons
@@ -31,13 +33,13 @@ import './App.css';
 
 /* ====== DATA ====== */
 const NAV_LINKS = [
-  { href: '#home',      label: 'Home' },
-  { href: '#about',     label: 'About' },
-  { href: '#skills',    label: 'Skills' },
-  { href: '#projects',  label: 'Projects' },
-  { href: '#github',    label: 'GitHub' },
+  { href: '#home', label: 'Home' },
+  { href: '#about', label: 'About' },
+  { href: '#skills', label: 'Skills' },
+  { href: '#projects', label: 'Projects' },
+  { href: '#github', label: 'GitHub' },
   { href: '#education', label: 'Education' },
-  { href: '#contact',   label: 'Contact' },
+  { href: '#contact', label: 'Contact' },
 ];
 
 const TYPING_TEXTS = [
@@ -268,45 +270,45 @@ function Navbar({ dark, toggleDark }) {
 
   return (
     <>
-    <header className={`navbar-header${scrolled ? ' scrolled' : ''}`}>
-      <nav className="navbar" aria-label="Main Navigation">
-        <div className="container">
-          <div className="nav-inner">
-            <a className="nav-logo" href="#home" onClick={e => { e.preventDefault(); scrollTo('#home'); }} aria-label="Rayyan Hassan Home">
-              <img src={logoImg} alt="Rayyan Hassan Logo" width="32" height="32" />
-              Rayyan<span>.</span>
-            </a>
-            <ul className="nav-links">
-              {NAV_LINKS.map(l => (
-                <li key={l.href}>
-                  <a
-                    href={l.href}
-                    className={active === l.href.slice(1) ? 'active' : ''}
-                    onClick={e => { e.preventDefault(); scrollTo(l.href); }}
-                  >{l.label}</a>
-                </li>
-              ))}
-            </ul>
-            <div className="nav-actions">
-              <button id="theme-toggle" className="theme-toggle" onClick={toggleDark} aria-label={`Switch to ${dark ? 'light' : 'dark'} mode`}>
-                {dark ? <FiSun size={17} /> : <FiMoon size={17} />}
-              </button>
-              <a href="#contact" className="nav-hire-btn" onClick={e => { e.preventDefault(); scrollTo('#contact'); }} aria-label="Hire Rayyan Hassan">
-                Hire Me
+      <header className={`navbar-header${scrolled ? ' scrolled' : ''}`}>
+        <nav className="navbar" aria-label="Main Navigation">
+          <div className="container">
+            <div className="nav-inner">
+              <a className="nav-logo" href="#home" onClick={e => { e.preventDefault(); scrollTo('#home'); }} aria-label="Rayyan Hassan Home">
+                <img src={logoImg} alt="Rayyan Hassan Logo" width="32" height="32" />
+                Rayyan<span>.</span>
               </a>
-              <button
-                id="nav-hamburger"
-                className={`nav-hamburger${menuOpen ? ' open' : ''}`}
-                onClick={() => setMenuOpen(o => !o)}
-                aria-label="Toggle Mobile Menu"
-              >
-                <span /><span /><span />
-              </button>
+              <ul className="nav-links">
+                {NAV_LINKS.map(l => (
+                  <li key={l.href}>
+                    <a
+                      href={l.href}
+                      className={active === l.href.slice(1) ? 'active' : ''}
+                      onClick={e => { e.preventDefault(); scrollTo(l.href); }}
+                    >{l.label}</a>
+                  </li>
+                ))}
+              </ul>
+              <div className="nav-actions">
+                <button id="theme-toggle" className="theme-toggle" onClick={toggleDark} aria-label={`Switch to ${dark ? 'light' : 'dark'} mode`}>
+                  {dark ? <FiSun size={17} /> : <FiMoon size={17} />}
+                </button>
+                <a href="#contact" className="nav-hire-btn" onClick={e => { e.preventDefault(); scrollTo('#contact'); }} aria-label="Hire Rayyan Hassan">
+                  Hire Me
+                </a>
+                <button
+                  id="nav-hamburger"
+                  className={`nav-hamburger${menuOpen ? ' open' : ''}`}
+                  onClick={() => setMenuOpen(o => !o)}
+                  aria-label="Toggle Mobile Menu"
+                >
+                  <span /><span /><span />
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      </nav>
-    </header>
+        </nav>
+      </header>
 
       <div className={`mobile-menu${menuOpen ? ' open' : ''}`} id="mobile-navigation-menu">
         {NAV_LINKS.map(l => (
@@ -314,16 +316,13 @@ function Navbar({ dark, toggleDark }) {
             {l.label}
           </a>
         ))}
-        <a
-          id="mobile-nav-download-cv"
-          href={resumePdf}
-          download
-          style={{ color: 'var(--teal-light)', fontWeight: 700, display: 'flex', alignItems: 'center', gap: 8 }}
-          onClick={() => setMenuOpen(false)}
-          aria-label="Download Curriculum Vitae"
-        >
-          <FiDownload size={15} /> Download CV
-        </a>
+        <div className="mobile-cv-section">
+          <span className="mobile-cv-label"><FiDownload size={14} /> Download CV</span>
+          <div className="mobile-cv-options">
+            <a href={resumePdf} download className="mobile-cv-opt">PDF Format</a>
+            <a href={resumeDocx} download className="mobile-cv-opt">Word Format</a>
+          </div>
+        </div>
       </div>
     </>
   );
@@ -333,10 +332,22 @@ function Navbar({ dark, toggleDark }) {
 function Hero() {
   const typed = useTypingEffect(TYPING_TEXTS);
   const [loaded, setLoaded] = useState(false);
+  const [showCvOptions, setShowCvOptions] = useState(false);
+  const cvMenuRef = useRef(null);
 
   useEffect(() => {
     const t = setTimeout(() => setLoaded(true), 200);
     return () => clearTimeout(t);
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (cvMenuRef.current && !cvMenuRef.current.contains(event.target)) {
+        setShowCvOptions(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
   const scrollTo = href => {
@@ -377,9 +388,29 @@ function Hero() {
               >
                 <IoRocketOutline size={18} /> View My Work
               </a>
-              <a href={resumePdf} id="hero-download-cv" className="outline-btn" download>
-                <FiDownload size={16} /> Download CV
-              </a>
+
+              <div className="cv-dropdown-container" ref={cvMenuRef}>
+                <button
+                  id="hero-download-cv"
+                  className={`outline-btn cv-trigger ${showCvOptions ? 'active' : ''}`}
+                  onClick={() => setShowCvOptions(!showCvOptions)}
+                >
+                  <FiDownload size={16} /> Download CV <FiChevronDown size={14} className={`arrow ${showCvOptions ? 'up' : ''}`} />
+                </button>
+
+                {showCvOptions && (
+                  <div className="cv-options-menu">
+                    <a href={resumePdf} download onClick={() => setShowCvOptions(false)}>
+                      <span className="pdf-icon">PDF</span>
+                      <strong>PDF</strong>
+                    </a>
+                    <a href={resumeDocx} download onClick={() => setShowCvOptions(false)}>
+                      <span className="word-icon">WORD</span>
+                      <strong>DOCX</strong>
+                    </a>
+                  </div>
+                )}
+              </div>
             </div>
             <div className="hero-socials">
               <span className="hero-social-label">Connect:</span>
@@ -443,7 +474,7 @@ function About() {
         <div className="about-grid">
           <div className="about-image-wrap reveal-left">
             <div className="about-img-card">
-              <img src={profileImg} alt="Rayyan Hassan" width="400" height="420" />
+              <img src={aboutImg} alt="Rayyan Hassan" width="400" height="420" />
             </div>
             <div className="about-floating-badge">
               <span className="afb-num">ACCP</span>
@@ -599,10 +630,10 @@ function GitHub({ dark }) {
   }, []);
 
   const ghStats = [
-    { Icon: FaFolderOpen, num: '10+',  label: 'Repositories' },
-    { Icon: FaStar,       num: '30+',  label: 'Stars Earned' },
+    { Icon: FaFolderOpen, num: '10+', label: 'Repositories' },
+    { Icon: FaStar, num: '30+', label: 'Stars Earned' },
     { Icon: FaCodeBranch, num: '100+', label: 'Commits' },
-    { Icon: FaUsers,      num: '3+',   label: 'Team Projects' },
+    { Icon: FaUsers, num: '3+', label: 'Team Projects' },
   ];
 
   return (
@@ -632,7 +663,7 @@ function GitHub({ dark }) {
               src="https://ghchart.rshah.org/26A641/RAYYANHASSAN321"
               alt="Rayyan Hassan's GitHub contribution chart"
               loading="lazy"
-              onLoad={() => { if(chartRef.current) chartRef.current.scrollLeft = chartRef.current.scrollWidth; }}
+              onLoad={() => { if (chartRef.current) chartRef.current.scrollLeft = chartRef.current.scrollWidth; }}
               onError={e => { e.target.style.display = 'none'; }}
             />
             <p style={{ color: 'var(--text-muted)', fontSize: '0.8rem', marginTop: 6 }}>
@@ -819,10 +850,10 @@ function Contact() {
   };
 
   const contactDetails = [
-    { Icon: MdEmail,      label: 'Email 1',      val: 'rayyanhasan571@gmail.com', href: 'mailto:rayyanhasan571@gmail.com' },
-    { Icon: MdEmail,      label: 'Email 2',      val: 'rayyanhassan1688@gmail.com', href: 'mailto:rayyanhassan1688@gmail.com' },
-    { Icon: MdLocationOn, label: 'Location',      val: 'Karachi, Pakistan 🇵🇰',      href: null },
-    { Icon: FiClock,      label: 'Availability',  val: 'Mon – Sat, 9am – 6pm PKT', href: null },
+    { Icon: MdEmail, label: 'Email 1', val: 'rayyanhasan571@gmail.com', href: 'mailto:rayyanhasan571@gmail.com' },
+    { Icon: MdEmail, label: 'Email 2', val: 'rayyanhassan1688@gmail.com', href: 'mailto:rayyanhassan1688@gmail.com' },
+    { Icon: MdLocationOn, label: 'Location', val: 'Karachi, Pakistan 🇵🇰', href: null },
+    { Icon: FiClock, label: 'Availability', val: 'Mon – Sat, 9am – 6pm PKT', href: null },
   ];
 
   return (
